@@ -3,17 +3,21 @@
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider.when('/',
         {
-            templateUrl: 'IndexTemplate',
+            templateUrl: '/Home/IndexTemplate',
+        });
+    $routeProvider.when('/Customer',
+        {
+            templateUrl: '/Customer/IndexTemplate',
             controller: 'ShowCustomersController'
         });
-    $routeProvider.when('/Edit/:id',
+    $routeProvider.when('/Customer/Edit/:id',
         {
-            templateUrl: 'EditTemplate',
+            templateUrl: '/Customer/EditTemplate',
             controller: 'EditCustomerController'
         });
-    $routeProvider.when('/Create',
+    $routeProvider.when('/Customer/Create',
         {
-            templateUrl: 'CreateTemplate',
+            templateUrl: '/Customer/CreateTemplate',
             controller: 'CreateCustomerController'
         });
     $routeProvider.otherwise(
@@ -68,7 +72,7 @@ app.controller('ShowCustomersController', ['$scope', '$location', '$http', 'Cust
     }
 
     $scope.edit = function (id) {
-        $location.path("/Edit/" + id);
+        $location.path("/Customer/Edit/" + id);
     }
 }]);
 
@@ -100,7 +104,7 @@ app.controller('EditCustomerController', ['$scope', '$routeParams', '$location',
 
 app.controller('CreateCustomerController', ['$scope', '$location', '$http', 'CustomerService', function ($scope, $location, $http, CustomerService) {
     $scope.backToList = function () {
-        $location.path("/");
+        $location.path("/Customer");
     }
 
     $scope.save = function () {
