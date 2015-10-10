@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="~/Styles/style.min.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+    <base href="/">
+</head>
+<body ng-app="customerModule">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div ng-view>
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--[if gt IE 8]><!-->
+    @*<script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script src="~/Scripts/app.js"></script>*@
+    <!--<![endif]-->
+</body>
+</html>

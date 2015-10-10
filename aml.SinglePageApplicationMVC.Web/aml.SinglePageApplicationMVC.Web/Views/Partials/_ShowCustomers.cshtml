@@ -1,0 +1,39 @@
+﻿@using aml.SinglePageApplicationMVC.Lib
+@model IEnumerable<Customer>
+<h2>Customers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { data_ng_href = "/Create" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th>
+            Telephone
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FirstName</td>
+            <td>@item.Surname</td>
+            <td>@item.Telephone</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</td>
+        </tr>
+    }
+
+    <tr class="ng-hide" data-ng-show="Show" data-ng-repeat="item in Customers">
+        <td data-ng-bind="item.DisplayName"></td>
+        <td data-ng-bind="item.DateOfBirth"></td>
+        <td data-ng-bind="item.Age"></td>
+        <td><a href="" data-ng-click="edit(item.Id)">Edit</a></td>
+    </tr>
+
+</table>

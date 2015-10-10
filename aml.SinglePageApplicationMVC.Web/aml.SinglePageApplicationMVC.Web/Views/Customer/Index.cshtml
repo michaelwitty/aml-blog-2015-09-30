@@ -1,0 +1,9 @@
+﻿@using aml.SinglePageApplicationMVC.Lib
+@model IEnumerable<Customer>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("~/Views/Partials/_ShowCustomers.cshtml", Model)

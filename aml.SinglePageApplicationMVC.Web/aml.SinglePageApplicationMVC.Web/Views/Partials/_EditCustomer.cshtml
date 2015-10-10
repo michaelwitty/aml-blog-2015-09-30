@@ -1,0 +1,37 @@
+﻿@using aml.SinglePageApplicationMVC.Lib
+@model Customer
+
+<h2>Edit</h2>
+
+<form name="edit_form" method="post" data_ng_submit="save()">
+    <div class="form-horizontal">
+        <h4>Customer</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, "First Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", data_ng_model = "Customer.FirstName" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Surname, "Last Name", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control", data_ng_model = "Customer.Surname" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Telephone, "Phone Number", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control", data_ng_model = "Customer.Telephone" } })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { data_ng_click = "backToList" })
+</div>
