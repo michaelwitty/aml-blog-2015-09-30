@@ -61,8 +61,12 @@ app.service('CustomerService', ['$http', function ($http) {
 
 app.controller('ShowCustomersController', ['$scope', '$location', '$http', 'CustomerService', function ($scope, $location, $http, CustomerService) {
 
-    loadData();
-    
+    var isServerLoaded = document.getElementById('hdnServerLoaded');
+
+    if (!isServerLoaded) {
+        loadData();
+    }
+
     function loadData()
     {
         CustomerService.getCustomers().success(function (result) {
@@ -78,7 +82,11 @@ app.controller('ShowCustomersController', ['$scope', '$location', '$http', 'Cust
 
 app.controller('EditCustomerController', ['$scope', '$routeParams', '$location', '$http','$filter', 'CustomerService', function ($scope, $routeParams, $location, $http,$filter, CustomerService) {
 
-    loadData();
+    var isServerLoaded = document.getElementById('hdnServerLoaded');
+
+    if (!isServerLoaded) {
+        loadData();
+    }
 
     function loadData() {
         CustomerService.getCustomer($routeParams.id).success(function (result) {
@@ -125,3 +133,34 @@ app.controller('CreateCustomerController', ['$scope', '$location', '$http', 'Cus
         }
     }
 }]);
+
+app.directive('valRequired', function () {
+    return {
+        restrict: 'A',
+        require: 'ngModel',
+
+        link: function (scope, elem, attrs, ngModel) {
+            scope.$watch(attrs.ngModel, function (value) {
+                var isValid = value != null && value.length > 0;
+                ngModel.$setValidity(attrs.ngModel, isValid);
+            });
+        }
+    };
+});
+
+app.directive('valmsgFor', function () {
+    return {
+        restrict: 'A',
+        require: '^form',
+        link: function (scope, elem, attrs, ctrl) {
+            var modelField = ctrl.$name + '.' + attrs.valmsgFor + '.$valid';
+            scope.$watch(modelField, function (isValid) {
+                if (isValid) {
+                    elem.attr('class', 'field-validation-valid');
+                } else {
+                    elem.attr('class', 'field-validation-invalid');
+                }
+            });
+        }
+    };
+});

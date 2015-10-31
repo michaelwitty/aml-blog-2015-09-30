@@ -11,10 +11,11 @@ namespace aml.SinglePageApplicationMVC.Lib
     {
         public int Id { get; set; }
 
+        [Required]
         public string FirstName { get; set; }
-
+        [Required]
         public string Surname { get; set; }
-
+        [Required]
         public string Telephone { get; set; }
     }
 }

@@ -4,3 +4,15 @@
 .ng-show {
   display: inherit;
 }
+form.ng-submitted input.ng-invalid {
+    border-color:red;
+    color:red;
+}
+.field-validation-valid,
+.field-validation-invalid {
+    display:none;
+}
+form.ng-submitted .field-validation-invalid {
+    display:inline;
+    color:red;
+}

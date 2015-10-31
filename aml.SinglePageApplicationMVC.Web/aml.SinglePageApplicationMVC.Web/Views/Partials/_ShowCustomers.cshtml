@@ -28,7 +28,7 @@
             <td>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</td>
         </tr>
     }
-
+    
     <tr class="ng-hide" data-ng-show="Show" data-ng-repeat="item in Customers">
         <td data-ng-bind="item.FirstName"></td>
         <td data-ng-bind="item.Surname"></td>

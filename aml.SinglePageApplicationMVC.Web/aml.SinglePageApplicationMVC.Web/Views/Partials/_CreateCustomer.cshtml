@@ -2,7 +2,7 @@
 @model Customer
 <h2>Create</h2>
 
-<form name="create_form" method="post" data_ng_submit="save()">
+<form name="create_form" method="post" data-ng-submit="save()">
     <div class="form-horizontal">
         <h4>Customer</h4>
         <hr />
@@ -10,18 +10,21 @@
             @Html.LabelFor(model => model.FirstName, "First Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", data_ng_model = "FirstName" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "Please enter your First Name")
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Surname, "Last Name", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control", data_ng_model = "Surname" } })
+                @Html.ValidationMessageFor(model => model.Surname, "Please enter your Last Name")
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Telephone, "Phone Number", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control", data_ng_model = "Telephone" } })
+                @Html.ValidationMessageFor(model => model.Telephone, "Please enter yout Phone number")
             </div>
         </div>
         <div class="form-group">

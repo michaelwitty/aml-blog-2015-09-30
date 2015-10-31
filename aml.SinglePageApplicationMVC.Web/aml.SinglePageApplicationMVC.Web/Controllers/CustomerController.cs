@@ -25,7 +25,7 @@ namespace aml.SinglePageApplicationMVC.Web.Controllers
         public ActionResult Index()
         {
             var model = this.customerRepository.FindAll();
-
+            
             return View(model);
         }
 
